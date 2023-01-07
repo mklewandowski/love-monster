@@ -9,12 +9,6 @@ public class HeartRow : MonoBehaviour
 
     private Vector2 heartMovement = new Vector2(-20f, 0);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +30,10 @@ public class HeartRow : MonoBehaviour
     {
         for (int i = 0; i < Hearts.Length; i++)
         {
-            Hearts[i].GetComponent<Rigidbody2D>().velocity = heartMovement;
+            Hearts[i].anchoredPosition = new Vector2(
+                    Hearts[i].anchoredPosition.x + heartMovement.x * Time.deltaTime,
+                    Hearts[i].anchoredPosition.y
+                );
         }
     }
 }
