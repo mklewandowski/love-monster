@@ -25,6 +25,7 @@ public class MonsterManager : MonoBehaviour
     float blinkTimer = 4f;
     float blinkCloseTimer = 0;
     float blinkCloseTimerMax = .25f;
+    float pokeCloseTimerMax = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -102,5 +103,19 @@ public class MonsterManager : MonoBehaviour
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 65f, InitialEyeRightPos.y);
+    }
+    public void PokeLeftEye()
+    {
+        audioManager.PlayPokeSound();
+        EyeLidLeft.SetActive(true);
+        blinkTimer = Random.Range(3f, 6f);
+        blinkCloseTimer = pokeCloseTimerMax;
+    }
+    public void PokeRightEye()
+    {
+        audioManager.PlayPokeSound();
+        EyeLidRight.SetActive(true);
+        blinkTimer = Random.Range(3f, 6f);
+        blinkCloseTimer = pokeCloseTimerMax;
     }
 }
