@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     AudioClip PokeSound;
     [SerializeField]
     AudioClip GrowlSound;
+    [SerializeField]
+    AudioClip ExplosionSound;
 
     void Awake()
     {
@@ -38,6 +40,11 @@ public class AudioManager : MonoBehaviour
     public void PlayGrowlSound()
     {
         audioSource.PlayOneShot(GrowlSound, 1f);
+    }
+
+    public void PlayExplosionSound()
+    {
+        audioSource.PlayOneShot(ExplosionSound, 1f);
     }
 
 }
