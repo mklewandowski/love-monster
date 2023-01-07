@@ -9,6 +9,10 @@ public class MonsterManager : MonoBehaviour
     RectTransform EyeLeft;
     [SerializeField]
     RectTransform EyeRight;
+    [SerializeField]
+    GameObject EyeLidLeft;
+    [SerializeField]
+    GameObject EyeLidRight;
 
     private AudioManager audioManager;
 
@@ -17,6 +21,10 @@ public class MonsterManager : MonoBehaviour
 
     float lookTimer = 0;
     float lookTimerMax = 2f;
+
+    float blinkTimer = 4f;
+    float blinkCloseTimer = 0;
+    float blinkCloseTimerMax = .25f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +44,26 @@ public class MonsterManager : MonoBehaviour
             {
                 EyeLeft.anchoredPosition = InitialEyeLeftPos;
                 EyeRight.anchoredPosition = InitialEyeRightPos;
+            }
+        }
+        if (blinkTimer > 0)
+        {
+            blinkTimer -= Time.deltaTime;
+            if (blinkTimer <= 0)
+            {
+                EyeLidLeft.SetActive(true);
+                EyeLidRight.SetActive(true);
+                blinkTimer = Random.Range(3f, 6f);
+                blinkCloseTimer = blinkCloseTimerMax;
+            }
+        }
+        if (blinkCloseTimer > 0)
+        {
+            blinkCloseTimer -= Time.deltaTime;
+            if (blinkCloseTimer <= 0)
+            {
+                EyeLidLeft.SetActive(false);
+                EyeLidRight.SetActive(false);
             }
         }
     }
