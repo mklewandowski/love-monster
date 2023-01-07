@@ -10,6 +10,10 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     RectTransform EyeRight;
     [SerializeField]
+    Image EyeImageLeft;
+    [SerializeField]
+    Image EyeImageRight;
+    [SerializeField]
     GameObject EyeLidLeft;
     [SerializeField]
     GameObject EyeLidRight;
@@ -17,6 +21,10 @@ public class MonsterManager : MonoBehaviour
     GameObject SmallMouth;
     [SerializeField]
     GameObject Explosion;
+    [SerializeField]
+    Sprite HeartSprite;
+    [SerializeField]
+    Sprite EyeSprite;
 
     private AudioManager audioManager;
 
@@ -34,6 +42,8 @@ public class MonsterManager : MonoBehaviour
     float smallMouthTimerMax = 1f;
     float explosionTimer = 0;
     float explosionTimerMax = .5f;
+    float heartTimer = 0;
+    float heartTimerMax = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +99,15 @@ public class MonsterManager : MonoBehaviour
             if (explosionTimer <= 0)
             {
                 Explosion.SetActive(false);
+            }
+        }
+        if (heartTimer > 0)
+        {
+            heartTimer -= Time.deltaTime;
+            if (heartTimer <= 0)
+            {
+                EyeImageLeft.sprite = EyeSprite;
+                EyeImageRight.sprite = EyeSprite;
             }
         }
     }
@@ -147,6 +166,13 @@ public class MonsterManager : MonoBehaviour
         audioManager.PlayGrowlSound();
         SmallMouth.SetActive(true);
         smallMouthTimer = smallMouthTimerMax;
+    }
+    public void PokeHeart()
+    {
+        //audioManager.PlayHeartSound();
+        EyeImageLeft.sprite = HeartSprite;
+        EyeImageRight.sprite = HeartSprite;
+        heartTimer = heartTimerMax;
     }
     public void TapDynamite()
     {
