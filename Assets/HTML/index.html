@@ -7,7 +7,7 @@
   </head>
   <body style="text-align: center; width: calc(100vw - 16px); height: calc(100vh - 16px)">
     <canvas id="unity-canvas" style="width: 100%; background: #231F20"></canvas>
-    <script src="Build/New folder.loader.js"></script>
+    <script src="Build/web.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -18,9 +18,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/New folder.data",
-        frameworkUrl: "Build/New folder.framework.js",
-        codeUrl: "Build/New folder.wasm",
+        dataUrl: "Build/web.data",
+        frameworkUrl: "Build/web.framework.js",
+        codeUrl: "Build/web.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "therealmattkain",
         productName: "love-monster",
