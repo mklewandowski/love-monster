@@ -1620,7 +1620,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1553714765}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2566,7 +2566,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1553714765}
-  m_RootOrder: 21
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2619,7 +2619,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1843771882}
         m_TargetAssemblyTypeName: MonsterManager, Assembly-CSharp
-        m_MethodName: PokeRightEye
+        m_MethodName: PokeMouth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4320,9 +4320,9 @@ RectTransform:
   - {fileID: 1365006771}
   - {fileID: 17003683}
   - {fileID: 1651702504}
+  - {fileID: 843981745}
   - {fileID: 539875219}
   - {fileID: 2145510166}
-  - {fileID: 843981745}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5213,6 +5213,7 @@ MonoBehaviour:
   EyeRight: {fileID: 796806947}
   EyeLidLeft: {fileID: 2123447374}
   EyeLidRight: {fileID: 2117870480}
+  SmallMouth: {fileID: 18831899}
 --- !u!4 &1843771883
 Transform:
   m_ObjectHideFlags: 0
@@ -5338,6 +5339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SwooshSound: {fileID: 8300000, guid: c7b4231c1357b194ea6cc7067169232d, type: 3}
   PokeSound: {fileID: 8300000, guid: 700679c67b243474c8378e2aa17ec5c6, type: 3}
+  GrowlSound: {fileID: 8300000, guid: b1c7d348774902c41b73f58ce694be01, type: 3}
 --- !u!1 &1875950316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6129,7 +6131,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1553714765}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}

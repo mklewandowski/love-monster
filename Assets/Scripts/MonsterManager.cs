@@ -132,6 +132,7 @@ public class MonsterManager : MonoBehaviour
     }
     public void PokeMouth()
     {
+        audioManager.PlayGrowlSound();
         SmallMouth.SetActive(true);
         smallMouthTimer = smallMouthTimerMax;
     }
