@@ -13,6 +13,8 @@ public class MonsterManager : MonoBehaviour
     GameObject EyeLidLeft;
     [SerializeField]
     GameObject EyeLidRight;
+    [SerializeField]
+    GameObject SmallMouth;
 
     private AudioManager audioManager;
 
@@ -26,6 +28,8 @@ public class MonsterManager : MonoBehaviour
     float blinkCloseTimer = 0;
     float blinkCloseTimerMax = .25f;
     float pokeCloseTimerMax = 1f;
+    float smallMouthTimer = 0;
+    float smallMouthTimerMax = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +69,14 @@ public class MonsterManager : MonoBehaviour
             {
                 EyeLidLeft.SetActive(false);
                 EyeLidRight.SetActive(false);
+            }
+        }
+        if (smallMouthTimer > 0)
+        {
+            smallMouthTimer -= Time.deltaTime;
+            if (smallMouthTimer <= 0)
+            {
+                SmallMouth.SetActive(false);
             }
         }
     }
@@ -117,5 +129,10 @@ public class MonsterManager : MonoBehaviour
         EyeLidRight.SetActive(true);
         blinkTimer = Random.Range(3f, 6f);
         blinkCloseTimer = pokeCloseTimerMax;
+    }
+    public void PokeMouth()
+    {
+        SmallMouth.SetActive(true);
+        smallMouthTimer = smallMouthTimerMax;
     }
 }
