@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     AudioClip GrowlSound;
     [SerializeField]
     AudioClip ExplosionSound;
+    [SerializeField]
+    AudioClip KindGrowlSound;
 
     void Awake()
     {
@@ -45,6 +47,11 @@ public class AudioManager : MonoBehaviour
     public void PlayExplosionSound()
     {
         audioSource.PlayOneShot(ExplosionSound, 1f);
+    }
+
+    public void PlayKindGrowlSound()
+    {
+        audioSource.PlayOneShot(KindGrowlSound, 1f);
     }
 
 }

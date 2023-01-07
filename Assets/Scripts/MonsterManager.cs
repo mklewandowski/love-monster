@@ -169,7 +169,7 @@ public class MonsterManager : MonoBehaviour
     }
     public void PokeHeart()
     {
-        //audioManager.PlayHeartSound();
+        audioManager.PlayKindGrowlSound();
         EyeImageLeft.sprite = HeartSprite;
         EyeImageRight.sprite = HeartSprite;
         heartTimer = heartTimerMax;

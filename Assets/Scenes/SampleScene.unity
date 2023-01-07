@@ -5482,6 +5482,7 @@ MonoBehaviour:
   PokeSound: {fileID: 8300000, guid: 700679c67b243474c8378e2aa17ec5c6, type: 3}
   GrowlSound: {fileID: 8300000, guid: b1c7d348774902c41b73f58ce694be01, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 229b690190739af498cab560ea52d2f2, type: 3}
+  KindGrowlSound: {fileID: 8300000, guid: 8fbb1d2f677652f48a733e657e4ce768, type: 3}
 --- !u!1 &1875950316
 GameObject:
   m_ObjectHideFlags: 0
