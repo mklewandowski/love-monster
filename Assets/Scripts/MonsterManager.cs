@@ -10,6 +10,8 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     RectTransform EyeRight;
 
+    private AudioManager audioManager;
+
     Vector2 InitialEyeRightPos;
     Vector2 InitialEyeLeftPos;
 
@@ -19,6 +21,7 @@ public class MonsterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = this.GetComponent<AudioManager>();
         InitialEyeLeftPos = EyeLeft.anchoredPosition;
         InitialEyeRightPos = EyeRight.anchoredPosition;
     }
@@ -39,30 +42,35 @@ public class MonsterManager : MonoBehaviour
 
     public void LookRight()
     {
+        audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 75f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x + 75f, InitialEyeRightPos.y);
     }
     public void LookLeft()
     {
+        audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x - 75f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 75f, InitialEyeRightPos.y);
     }
     public void LookUp()
     {
+        audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y + 65f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y + 65f);
     }
     public void LookDown()
     {
+        audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y - 65f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y - 65f);
     }
     public void LookCenter()
     {
+        audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 65f, InitialEyeRightPos.y);
