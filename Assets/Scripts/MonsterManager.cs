@@ -15,6 +15,8 @@ public class MonsterManager : MonoBehaviour
     GameObject EyeLidRight;
     [SerializeField]
     GameObject SmallMouth;
+    [SerializeField]
+    GameObject Explosion;
 
     private AudioManager audioManager;
 
@@ -30,6 +32,8 @@ public class MonsterManager : MonoBehaviour
     float pokeCloseTimerMax = 1f;
     float smallMouthTimer = 0;
     float smallMouthTimerMax = 1f;
+    float explosionTimer = 0;
+    float explosionTimerMax = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +81,14 @@ public class MonsterManager : MonoBehaviour
             if (smallMouthTimer <= 0)
             {
                 SmallMouth.SetActive(false);
+            }
+        }
+        if (explosionTimer > 0)
+        {
+            explosionTimer -= Time.deltaTime;
+            if (explosionTimer <= 0)
+            {
+                Explosion.SetActive(false);
             }
         }
     }
@@ -135,5 +147,17 @@ public class MonsterManager : MonoBehaviour
         audioManager.PlayGrowlSound();
         SmallMouth.SetActive(true);
         smallMouthTimer = smallMouthTimerMax;
+    }
+    public void TapDynamite()
+    {
+        audioManager.PlayExplosionSound();
+        explosionTimer = explosionTimerMax;
+        EyeLidLeft.SetActive(true);
+        EyeLidRight.SetActive(true);
+        blinkTimer = Random.Range(3f, 6f);
+        blinkCloseTimer = explosionTimerMax;
+        Explosion.transform.localScale = new Vector3(.1f, .1f, .1f);
+        Explosion.SetActive(true);
+        Explosion.GetComponent<GrowAndShrink>().StartEffect();
     }
 }
