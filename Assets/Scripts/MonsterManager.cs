@@ -37,6 +37,8 @@ public class MonsterManager : MonoBehaviour
     GameObject Bubble;
     [SerializeField]
     Sprite[] BubbleSprites;
+    [SerializeField]
+    GameObject Tongue;
 
     private AudioManager audioManager;
 
@@ -64,6 +66,8 @@ public class MonsterManager : MonoBehaviour
     float bubbleTimerMax = 6f;
     float showBubbleTimer = 0;
     float showBubbleTimerMax = 4f;
+    float tongueTimer = 0;
+    float tongueTimerMax = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +100,14 @@ public class MonsterManager : MonoBehaviour
             {
                 Bubble.SetActive(false);
                 bubbleTimer = bubbleTimerMax;
+            }
+        }
+        if (tongueTimer > 0)
+        {
+            tongueTimer -= Time.deltaTime;
+            if (tongueTimer <= 0)
+            {
+                Tongue.SetActive(false);
             }
         }
         if (lookTimer > 0)
@@ -280,6 +292,13 @@ public class MonsterManager : MonoBehaviour
         EarRight2.SetActive(true);
         earRightTimer = earRightTimerMax;
         LookRight();
+        ResetBubbleTimer();
+    }
+    public void PokeTongue()
+    {
+        audioManager.PlayGrowlSound();
+        Tongue.SetActive(true);
+        tongueTimer = tongueTimerMax;
         ResetBubbleTimer();
     }
     public void TapDynamite()
