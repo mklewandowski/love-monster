@@ -209,6 +209,22 @@ public class MonsterManager : MonoBehaviour
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y - 65f);
         ResetBubbleTimer();
     }
+    public void LookDownRight()
+    {
+        audioManager.PlaySwooshSound();
+        lookTimer = lookTimerMax;
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y - 50f);
+        EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x + 75f, InitialEyeRightPos.y - 65f);
+        ResetBubbleTimer();
+    }
+    public void LookDownLeft()
+    {
+        audioManager.PlaySwooshSound();
+        lookTimer = lookTimerMax;
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x - 45f, InitialEyeLeftPos.y - 40f);
+        EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 75f, InitialEyeRightPos.y - 65f);
+        ResetBubbleTimer();
+    }
     public void LookCenter()
     {
         audioManager.PlaySwooshSound();
