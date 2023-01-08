@@ -6063,6 +6063,8 @@ MonoBehaviour:
   GrowlSound: {fileID: 8300000, guid: b1c7d348774902c41b73f58ce694be01, type: 3}
   ExplosionSound: {fileID: 8300000, guid: 229b690190739af498cab560ea52d2f2, type: 3}
   KindGrowlSound: {fileID: 8300000, guid: 8fbb1d2f677652f48a733e657e4ce768, type: 3}
+  SmallGrowl1Sound: {fileID: 8300000, guid: a13df190914ed0147b1af5270d9d97e0, type: 3}
+  SmallGrowl2Sound: {fileID: 8300000, guid: dc6ef405768eaf040b06ad18fee61c5c, type: 3}
 --- !u!1 &1875950316
 GameObject:
   m_ObjectHideFlags: 0

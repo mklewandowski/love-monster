@@ -53,9 +53,9 @@ public class MonsterManager : MonoBehaviour
     float heartTimer = 0;
     float heartTimerMax = 2f;
     float earRightTimer = 0f;
-    float earRightTimerMax = 3f;
+    float earRightTimerMax = 2f;
     float earLeftTimer = 0f;
-    float earLeftTimerMax = 3f;
+    float earLeftTimerMax = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -206,7 +206,7 @@ public class MonsterManager : MonoBehaviour
     }
     public void PokeLeftEar()
     {
-        //audioManager.PlayKindGrowlSound();
+        audioManager.PlaySmallGrowl1Sound();
         EarLeft1.SetActive(false);
         EarLeft2.SetActive(true);
         earLeftTimer = earLeftTimerMax;
@@ -214,7 +214,7 @@ public class MonsterManager : MonoBehaviour
     }
     public void PokeRightEar()
     {
-        //.PlayKindGrowlSound();
+        audioManager.PlaySmallGrowl2Sound();
         EarRight1.SetActive(false);
         EarRight2.SetActive(true);
         earRightTimer = earRightTimerMax;
