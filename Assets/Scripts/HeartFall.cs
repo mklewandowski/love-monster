@@ -6,6 +6,7 @@ public class HeartFall : MonoBehaviour
 {
     private Vector2 heartMovement = new Vector2(0, 0);
     private float rotation;
+    private RectTransform rectTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class HeartFall : MonoBehaviour
         rotation = Random.Range (-.05f, .05f);
         float scale = Random.Range(.1f, .5f);
         this.transform.localScale = new Vector3(scale, scale, 1f);
+        rectTransform = this.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,9 @@ public class HeartFall : MonoBehaviour
     }
     void FixedUpdate()
     {
-        this.GetComponent<Rigidbody2D>().velocity = heartMovement;
+        rectTransform.anchoredPosition = new Vector2(
+                rectTransform.anchoredPosition.x,
+                rectTransform.anchoredPosition.y + heartMovement.y * Time.deltaTime
+            );
     }
 }

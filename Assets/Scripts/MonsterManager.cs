@@ -300,7 +300,8 @@ public class MonsterManager : MonoBehaviour
         int numHearts = 10;
         for (int x = 0; x < numHearts; x++)
         {
-            Instantiate(FallingHeartPrefab, new Vector2(Random.Range(700f, 1220f), Random.Range(1200f, 1700f)), Quaternion.identity, HeartContainer.transform);
+            GameObject go = Instantiate(FallingHeartPrefab, new Vector2(-1000f, -1000f), Quaternion.identity, HeartContainer.transform);
+            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-400f, 400f), Random.Range(650f, 900f));
         }
     }
     public void PokeLeftEar()
@@ -356,7 +357,8 @@ public class MonsterManager : MonoBehaviour
         int numHearts = 10;
         for (int x = 0; x < numHearts; x++)
         {
-            GameObject go = Instantiate(FallingHeartPrefab, new Vector2(Random.Range(700f, 1220f), Random.Range(1200f, 1700f)), Quaternion.identity, HeartContainer.transform);
+            GameObject go = Instantiate(FallingHeartPrefab, new Vector2(-1000f, -1000f), Quaternion.identity, HeartContainer.transform);
+            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-400f, 400f), Random.Range(650f, 900f));
             go.GetComponent<Image>().sprite = BubbleFallingSprites[bubbleIndex];
         }
     }
