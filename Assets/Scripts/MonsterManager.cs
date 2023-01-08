@@ -45,6 +45,8 @@ public class MonsterManager : MonoBehaviour
     GameObject FallingHeartPrefab;
     [SerializeField]
     GameObject HeartContainer;
+    [SerializeField]
+    GameObject BubbleSpot;
 
     private AudioManager audioManager;
 
@@ -74,6 +76,8 @@ public class MonsterManager : MonoBehaviour
     float showBubbleTimerMax = 4f;
     float tongueTimer = 0;
     float tongueTimerMax = 2f;
+    float spotTimer = 0;
+    float spotTimerMax = 4f;
 
     int bubbleIndex = 0;
 
@@ -109,6 +113,14 @@ public class MonsterManager : MonoBehaviour
             {
                 Bubble.SetActive(false);
                 bubbleTimer = bubbleTimerMax;
+            }
+        }
+        if (spotTimer > 0)
+        {
+            spotTimer -= Time.deltaTime;
+            if (spotTimer <= 0)
+            {
+                BubbleSpot.SetActive(false);
             }
         }
         if (tongueTimer > 0)
@@ -315,6 +327,15 @@ public class MonsterManager : MonoBehaviour
         Tongue.SetActive(true);
         tongueTimer = tongueTimerMax;
         ResetBubbleTimer();
+    }
+    public void PokeSpot()
+    {
+        audioManager.PlayPopSound();
+        BubbleSpot.SetActive(true);
+        spotTimer = spotTimerMax;
+        ResetBubbleTimer();
+        Bubble.SetActive(false);
+        LookDown();
     }
     public void TapDynamite()
     {
