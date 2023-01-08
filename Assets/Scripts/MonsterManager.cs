@@ -86,6 +86,7 @@ public class MonsterManager : MonoBehaviour
                 Bubble.SetActive(true);
                 Bubble.GetComponent<GrowAndShrink>().StartEffect();
                 showBubbleTimer = showBubbleTimerMax;
+                audioManager.PlayPopSound();
             }
         }
         if (showBubbleTimer > 0)

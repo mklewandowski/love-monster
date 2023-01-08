@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     AudioClip SmallGrowl1Sound;
     [SerializeField]
     AudioClip SmallGrowl2Sound;
+    [SerializeField]
+    AudioClip PopSound;
 
     void Awake()
     {
@@ -62,9 +64,14 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(SmallGrowl1Sound, 1f);
     }
+
     public void PlaySmallGrowl2Sound()
     {
         audioSource.PlayOneShot(SmallGrowl2Sound, 1f);
     }
 
+    public void PlayPopSound()
+    {
+        audioSource.PlayOneShot(PopSound, 1f);
+    }
 }
