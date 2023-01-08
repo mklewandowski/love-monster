@@ -38,6 +38,8 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     Sprite[] BubbleSprites;
     [SerializeField]
+    Sprite[] BubbleFallingSprites;
+    [SerializeField]
     GameObject Tongue;
     [SerializeField]
     GameObject FallingHeartPrefab;
@@ -73,6 +75,8 @@ public class MonsterManager : MonoBehaviour
     float tongueTimer = 0;
     float tongueTimerMax = 2f;
 
+    int bubbleIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +93,8 @@ public class MonsterManager : MonoBehaviour
             bubbleTimer -= Time.deltaTime;
             if (bubbleTimer <= 0)
             {
-                Bubble.GetComponent<Image>().sprite = BubbleSprites[Random.Range(0, BubbleSprites.Length)];
+                bubbleIndex = Random.Range(0, BubbleSprites.Length);
+                Bubble.GetComponent<Image>().sprite = BubbleSprites[bubbleIndex];
                 Bubble.transform.localScale = new Vector3(.1f, .1f, .1f);
                 Bubble.SetActive(true);
                 Bubble.GetComponent<GrowAndShrink>().StartEffect();
@@ -323,5 +328,15 @@ public class MonsterManager : MonoBehaviour
         Explosion.SetActive(true);
         Explosion.GetComponent<GrowAndShrink>().StartEffect();
         ResetBubbleTimer();
+    }
+    public void TapBubble()
+    {
+        audioManager.PlayPopSound();
+        int numHearts = 10;
+        for (int x = 0; x < numHearts; x++)
+        {
+            GameObject go = Instantiate(FallingHeartPrefab, new Vector2(Random.Range(700f, 1220f), Random.Range(1200f, 1700f)), Quaternion.identity, HeartContainer.transform);
+            go.GetComponent<Image>().sprite = BubbleFallingSprites[bubbleIndex];
+        }
     }
 }
