@@ -210,6 +210,7 @@ public class MonsterManager : MonoBehaviour
         EarLeft1.SetActive(false);
         EarLeft2.SetActive(true);
         earLeftTimer = earLeftTimerMax;
+        LookLeft();
     }
     public void PokeRightEar()
     {
@@ -217,6 +218,7 @@ public class MonsterManager : MonoBehaviour
         EarRight1.SetActive(false);
         EarRight2.SetActive(true);
         earRightTimer = earRightTimerMax;
+        LookRight();
     }
     public void TapDynamite()
     {
