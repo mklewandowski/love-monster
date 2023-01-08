@@ -22,6 +22,14 @@ public class MonsterManager : MonoBehaviour
     [SerializeField]
     GameObject Explosion;
     [SerializeField]
+    GameObject EarLeft1;
+    [SerializeField]
+    GameObject EarLeft2;
+    [SerializeField]
+    GameObject EarRight1;
+    [SerializeField]
+    GameObject EarRight2;
+    [SerializeField]
     Sprite HeartSprite;
     [SerializeField]
     Sprite EyeSprite;
@@ -44,6 +52,10 @@ public class MonsterManager : MonoBehaviour
     float explosionTimerMax = .5f;
     float heartTimer = 0;
     float heartTimerMax = 2f;
+    float earRightTimer = 0f;
+    float earRightTimerMax = 3f;
+    float earLeftTimer = 0f;
+    float earLeftTimerMax = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +122,24 @@ public class MonsterManager : MonoBehaviour
                 EyeImageRight.sprite = EyeSprite;
             }
         }
+        if (earRightTimer > 0)
+        {
+            earRightTimer -= Time.deltaTime;
+            if (earRightTimer <= 0)
+            {
+                EarRight1.SetActive(true);
+                EarRight2.SetActive(false);
+            }
+        }
+        if (earLeftTimer > 0)
+        {
+            earLeftTimer -= Time.deltaTime;
+            if (earLeftTimer <= 0)
+            {
+                EarLeft1.SetActive(true);
+                EarLeft2.SetActive(false);
+            }
+        }
     }
 
     public void LookRight()
@@ -173,6 +203,20 @@ public class MonsterManager : MonoBehaviour
         EyeImageLeft.sprite = HeartSprite;
         EyeImageRight.sprite = HeartSprite;
         heartTimer = heartTimerMax;
+    }
+    public void PokeLeftEar()
+    {
+        //audioManager.PlayKindGrowlSound();
+        EarLeft1.SetActive(false);
+        EarLeft2.SetActive(true);
+        earLeftTimer = earLeftTimerMax;
+    }
+    public void PokeRightEar()
+    {
+        //.PlayKindGrowlSound();
+        EarRight1.SetActive(false);
+        EarRight2.SetActive(true);
+        earRightTimer = earRightTimerMax;
     }
     public void TapDynamite()
     {
