@@ -33,6 +33,10 @@ public class MonsterManager : MonoBehaviour
     Sprite HeartSprite;
     [SerializeField]
     Sprite EyeSprite;
+    [SerializeField]
+    GameObject Bubble;
+    [SerializeField]
+    Sprite[] BubbleSprites;
 
     private AudioManager audioManager;
 
@@ -56,6 +60,10 @@ public class MonsterManager : MonoBehaviour
     float earRightTimerMax = 2f;
     float earLeftTimer = 0f;
     float earLeftTimerMax = 2f;
+    float bubbleTimer = 6f;
+    float bubbleTimerMax = 6f;
+    float showBubbleTimer = 0;
+    float showBubbleTimerMax = 4f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +76,27 @@ public class MonsterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bubbleTimer > 0)
+        {
+            bubbleTimer -= Time.deltaTime;
+            if (bubbleTimer <= 0)
+            {
+                Bubble.GetComponent<Image>().sprite = BubbleSprites[Random.Range(0, BubbleSprites.Length)];
+                Bubble.transform.localScale = new Vector3(.1f, .1f, .1f);
+                Bubble.SetActive(true);
+                Bubble.GetComponent<GrowAndShrink>().StartEffect();
+                showBubbleTimer = showBubbleTimerMax;
+            }
+        }
+        if (showBubbleTimer > 0)
+        {
+            showBubbleTimer -= Time.deltaTime;
+            if (showBubbleTimer <= 0)
+            {
+                Bubble.SetActive(false);
+                bubbleTimer = bubbleTimerMax;
+            }
+        }
         if (lookTimer > 0)
         {
             lookTimer -= Time.deltaTime;
@@ -142,12 +171,18 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
+    void ResetBubbleTimer()
+    {
+        bubbleTimer = bubbleTimerMax;
+    }
+
     public void LookRight()
     {
         audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x + 75f, InitialEyeRightPos.y);
+        ResetBubbleTimer();
     }
     public void LookLeft()
     {
@@ -155,6 +190,7 @@ public class MonsterManager : MonoBehaviour
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x - 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 75f, InitialEyeRightPos.y);
+        ResetBubbleTimer();
     }
     public void LookUp()
     {
@@ -162,6 +198,7 @@ public class MonsterManager : MonoBehaviour
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y + 50f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y + 65f);
+        ResetBubbleTimer();
     }
     public void LookDown()
     {
@@ -169,6 +206,7 @@ public class MonsterManager : MonoBehaviour
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y - 50f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y - 65f);
+        ResetBubbleTimer();
     }
     public void LookCenter()
     {
@@ -176,6 +214,7 @@ public class MonsterManager : MonoBehaviour
         lookTimer = lookTimerMax;
         EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 65f, InitialEyeRightPos.y);
+        ResetBubbleTimer();
     }
     public void PokeLeftEye()
     {
@@ -183,6 +222,7 @@ public class MonsterManager : MonoBehaviour
         EyeLidLeft.SetActive(true);
         blinkTimer = Random.Range(3f, 6f);
         blinkCloseTimer = pokeCloseTimerMax;
+        ResetBubbleTimer();
     }
     public void PokeRightEye()
     {
@@ -190,12 +230,14 @@ public class MonsterManager : MonoBehaviour
         EyeLidRight.SetActive(true);
         blinkTimer = Random.Range(3f, 6f);
         blinkCloseTimer = pokeCloseTimerMax;
+        ResetBubbleTimer();
     }
     public void PokeMouth()
     {
         audioManager.PlayGrowlSound();
         SmallMouth.SetActive(true);
         smallMouthTimer = smallMouthTimerMax;
+        ResetBubbleTimer();
     }
     public void PokeHeart()
     {
@@ -203,6 +245,7 @@ public class MonsterManager : MonoBehaviour
         EyeImageLeft.sprite = HeartSprite;
         EyeImageRight.sprite = HeartSprite;
         heartTimer = heartTimerMax;
+        ResetBubbleTimer();
     }
     public void PokeLeftEar()
     {
@@ -211,6 +254,7 @@ public class MonsterManager : MonoBehaviour
         EarLeft2.SetActive(true);
         earLeftTimer = earLeftTimerMax;
         LookLeft();
+        ResetBubbleTimer();
     }
     public void PokeRightEar()
     {
@@ -219,6 +263,7 @@ public class MonsterManager : MonoBehaviour
         EarRight2.SetActive(true);
         earRightTimer = earRightTimerMax;
         LookRight();
+        ResetBubbleTimer();
     }
     public void TapDynamite()
     {
@@ -231,5 +276,6 @@ public class MonsterManager : MonoBehaviour
         Explosion.transform.localScale = new Vector3(.1f, .1f, .1f);
         Explosion.SetActive(true);
         Explosion.GetComponent<GrowAndShrink>().StartEffect();
+        ResetBubbleTimer();
     }
 }
