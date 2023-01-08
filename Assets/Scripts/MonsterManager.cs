@@ -116,28 +116,28 @@ public class MonsterManager : MonoBehaviour
     {
         audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
-        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 75f, InitialEyeLeftPos.y);
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x + 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x + 75f, InitialEyeRightPos.y);
     }
     public void LookLeft()
     {
         audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
-        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x - 75f, InitialEyeLeftPos.y);
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x - 65f, InitialEyeLeftPos.y);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x - 75f, InitialEyeRightPos.y);
     }
     public void LookUp()
     {
         audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
-        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y + 65f);
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y + 50f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y + 65f);
     }
     public void LookDown()
     {
         audioManager.PlaySwooshSound();
         lookTimer = lookTimerMax;
-        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y - 65f);
+        EyeLeft.anchoredPosition = new Vector2(InitialEyeLeftPos.x, InitialEyeLeftPos.y - 50f);
         EyeRight.anchoredPosition = new Vector2(InitialEyeRightPos.x, InitialEyeRightPos.y - 65f);
     }
     public void LookCenter()
