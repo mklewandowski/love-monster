@@ -1,5 +1,5 @@
 # Love Monster
-An idle clicker with no reward other than love and monsters.
+An idle clicker with no reward other than love and monsters. Featuring glorious art by my school-aged cousin.
 
 ![Love Monster gameplay](https://github.com/mklewandowski/love-monster/blob/main/Assets/Images/gameplay.jpg?raw=true)
 
